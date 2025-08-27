@@ -1,12 +1,22 @@
 [
   {
-    "id": "6",
-    "title": "Producto de prueba",
-    "description": "Este es un producto de prueba",
-    "price": 100,
+    "id": 2,
+    "status": true,
+    "title": "Producto de prueba 33333",
+    "description": "Este es otro producto de prueba",
+    "price": 13300,
     "thumbnail": "sin imagen",
     "stock": 50,
+    "category": "prueba3"
+  },
+  {
+    "id": 3,
     "status": true,
-    "category": "prueba"
+    "title": "Producto de prueba 3",
+    "description": "Este es otro producto de prueba",
+    "price": 13300,
+    "thumbnail": "sin imagen",
+    "stock": 50,
+    "category": "prueba3"
   }
 ]

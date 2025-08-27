@@ -1,8 +1,7 @@
-const fs= require("fs/promises");
+//const fs= require("fs/promises");
+import { promises as fs } from "fs";
 
-const path= require("path");
 
-const filePath= path.join(__dirname,"data", "products.json");
 
 
 
@@ -38,26 +37,28 @@ class ProductManager {
     
 
     // Validar campos obligatorios
-    const { title, description, price, thumbnail, id, stock , status, category} = product;
-    if (!title || !description || !price || !thumbnail || !id || !stock || !status || !category) {
+    const { title, description, price, thumbnail, stock , status, category} = product;
+    if (!title || !description || !price || !thumbnail || !stock || !status || !category) {
       console.log("Todos los campos son obligatorios");
     }
   // Validar que el código no se repita
-    const exists = products.find((p) => p.id === id);
+  /*  const exists = products.find((p) => p.id === id);
     if (exists) {
       console.log("El código ya existe");
-    }
+    }*/
  
 
     // Generar id autoincremental
     const newProduct = {
-      id: products.length > 0 ? products[products.length - 1].id + 1 : 1,
+      id: products.length > 0 ? parseInt(products[products.length - 1].id) + 1 : 1,
+      status:true,
       ...product,
     };
+    console.log("Nuevo producto creado:", newProduct.id);
 
     products.push(newProduct);
     await this.#writeFile(products);
-   // return newProduct;
+    return newProduct;
     
     } catch (error) {
         console.log("Error al crear el producto:", error);
@@ -97,7 +98,7 @@ class ProductManager {
     try{
         const products = await this.#readFile();
         const index = products.findIndex((p) => p.id === id);
-        if (!index) {
+        if (index === -1) {
             console.log("Producto no encontrado");
         }
 
@@ -117,7 +118,7 @@ class ProductManager {
         const filtered = products.filter((p) => p.id !== id);
 
         if (products.length === filtered.length) {
-            console.log("Producto no encontrado");
+            console.log("Producto no encontrado11");
             return false;
         }
 
@@ -127,6 +128,8 @@ class ProductManager {
     console.log("Error al eliminar el producto:", error);
   }
 }}
+
+export default ProductManager;
 
 /*const prueba= new ProductManager(filePath);
 

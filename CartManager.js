@@ -1,7 +1,8 @@
-const fs=require("fs/promises");
-const path= require("path");
+//const fs=require("fs/promises");
+import { promises as fs } from "fs";
+//const path= require("path");
 
-const filePath= path.join(__dirname,"data", "carts.json");
+//const filePath= path.join(__dirname,"data", "carts.json");
 
 class CartManager {
   constructor(filePath) {
@@ -70,6 +71,7 @@ class CartManager {
   }
 }
 }
+export default CartManager;
 /*const prueba= new CartManager(filePath);
 
 prueba.addProductToCart(1, 7);
